@@ -122,9 +122,21 @@ struct MinHeap{
                 swap(indexOne:index, indexTwo:smallerChildIndex)
             }
             index = smallerChildIndex
-            
         }
-        
     }
-
 }
+
+//Main
+
+var minHeap = MinHeap()
+minHeap.add(2)
+minHeap.add(10)
+minHeap.add(8)
+minHeap.add(9)
+minHeap.add(7)
+minHeap.add(3)
+minHeap.add(4)
+
+dump(minHeap.items)
+
+
