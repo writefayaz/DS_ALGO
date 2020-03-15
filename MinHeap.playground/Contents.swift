@@ -18,8 +18,6 @@ struct MinHeap{
         return ( childIndex - 1 ) / 2
     }
     
-    
-    
     //MARK: Check if node has LeftChild
     private func hasLeftChild(_ nodeIndex: Int) -> Bool {
         return getLeftChildIndex(nodeIndex) < items.count
@@ -34,8 +32,6 @@ struct MinHeap{
     private func hasParent(_ nodeIndex: Int) -> Bool {
         return getParentIndex(nodeIndex) >= 0
     }
-    
-    
     
     //MARK: Return left child item from Heap
     private func getLeftChild(_ index: Int) -> Int {
@@ -61,6 +57,40 @@ struct MinHeap{
         }
     }
     
+    //MARK: Poll - Remove value of parent node from the heap
+    mutating public func poll() -> Int {
+        if items.count != 0 {
+            let item = items[0]
+            items[0]  = items[items.count - 1]
+            heapifyDown()
+            items.removeLast()
+        }else{
+            fatalError()
+        }
+    }
+    
+    //MARK: Add an Item
+    mutating public add(_ item: Int) {
+        items.append(item)
+        heapifyUp()
+    }
+    
+    //MARK : Swap two items
+    mutating public swap(_ indexOne: Int , indexTwo: Int){
+        let placeHolder = items[indexOne]
+        items[indexOne] = items[indexTwo]
+        items[indexTwo] = placeHolder
+    }
+    
+    mutating private func heapifyUp(){
+           
+    }
+    
+    mutating private func heapifyDown(){
+        
+    }
+    
+
     
     
     
