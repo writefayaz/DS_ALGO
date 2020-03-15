@@ -1,3 +1,11 @@
+//
+//  MinHeap Implementation in Swift
+//  DS & Algo
+//
+//  Created by Fayaz on 3/15/20.
+//  Copyright © 2020 MinHeap. All rights reserved.
+//
+
 import Foundation
 
 struct MinHeap{
@@ -85,7 +93,11 @@ struct MinHeap{
     
     //MARK: Compare and Push Up when added new item
     mutating private func heapifyUp(){
-           
+        var index = items.count - 1
+        while hasParent(index) && getParent(index) > items[index]{
+            swap(indexOne: getParentIndex(index), indexTwo: index)
+            index = getParentIndex(index)
+        }
     }
     
     //MARK: Compare and Push Down when polled top item and replaces with last item
@@ -114,9 +126,5 @@ struct MinHeap{
         }
         
     }
-    
 
-    
-    
-    
 }
