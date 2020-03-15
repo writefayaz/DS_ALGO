@@ -64,29 +64,54 @@ struct MinHeap{
             items[0]  = items[items.count - 1]
             heapifyDown()
             items.removeLast()
+            return item
         }else{
             fatalError()
         }
     }
     
     //MARK: Add an Item
-    mutating public add(_ item: Int) {
+    mutating public func add(_ item: Int) {
         items.append(item)
         heapifyUp()
     }
     
     //MARK : Swap two items
-    mutating public swap(_ indexOne: Int , indexTwo: Int){
+    mutating public func swap(indexOne: Int ,indexTwo: Int){
         let placeHolder = items[indexOne]
         items[indexOne] = items[indexTwo]
         items[indexTwo] = placeHolder
     }
     
+    //MARK: Compare and Push Up when added new item
     mutating private func heapifyUp(){
            
     }
     
+    //MARK: Compare and Push Down when polled top item and replaces with last item
     mutating private func heapifyDown(){
+        var index = 0
+        
+        //Index moves from left to right, loop until left child
+        while hasLeftChild(index){
+            //Know which way to push
+            //Push Left
+            var smallerChildIndex = getLeftChildIndex(index)
+            if hasRightChild(index) && getRightChild(index) < getLeftChild(index) {
+                //Push Right
+                smallerChildIndex = getRightChildIndex(index)
+            }
+            
+            if items[index] < items[smallerChildIndex]{
+                //Exit . No ned to push further
+                break;
+            }else{
+                //Swap the two and continue pushing further
+                swap(indexOne:index, indexTwo:smallerChildIndex)
+            }
+            index = smallerChildIndex
+            
+        }
         
     }
     
