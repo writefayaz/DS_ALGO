@@ -52,6 +52,16 @@ struct MinHeap{
         return items[getParentIndex(index)]
     }
     
+    //MARK: Get parent node item
+    public func peek() -> Int {
+        if items.count != 0{
+            return items[0]
+        }else{
+            fatalError()
+        }
+    }
+    
+    
     
     
 }
