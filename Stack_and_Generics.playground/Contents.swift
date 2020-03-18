@@ -33,6 +33,9 @@ class Stack<T> {
         top = top?.next
         return currentTop?.value
     }
+    func peek() -> T? {
+        return top?.value
+    }
 }
 
 var stack = Stack<Int>()
@@ -42,6 +45,9 @@ stack.push(3)
 
 stack.pop()
 stack.pop()
+
+stack.peek()
+
 stack.pop()
 stack.pop()
 
