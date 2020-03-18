@@ -39,8 +39,42 @@ struct QueueArray<T>: Queue {
 }
 
 
+struct QueueStack<T> : Queue {
+    private var enqueueStack : [T] = []
+    private var dequeueStack : [T] = []
+    
+    var isEmpty : Bool {
+        return enqueueStack.isEmpty && dequeueStack.isEmpty
+    }
+    
+    var peek : T? {
+        !dequeueStack.isEmpty ? dequeueStack.last : enqueueStack.first
+    }
+    
+    mutating func enqueue(_ element: T) {
+        enqueueStack.append(element)
+    }
+    
+    @discardableResult
+    mutating func dequeue() -> T? {
+        if dequeueStack.isEmpty {
+            dequeueStack = enqueueStack.reversed()
+            enqueueStack.removeAll()
+        }
+        return dequeueStack.popLast()
+    }
+    
+}
+
+
 var queueArray = QueueArray<String>()
 queueArray.enqueue("Fayaz")
 queueArray.enqueue("Mammoo")
 queueArray.dequeue()
 queueArray.dequeue()
+
+var queueStack = QueueStack<String>()
+queueStack.enqueue("Ramy")
+queueStack.enqueue("Fayaz")
+queueStack.dequeue()
+queueStack.dequeue()
