@@ -125,7 +125,7 @@ struct MinHeap{
         }
     }
 }
-
+ 
 //Main
 
 var minHeap = MinHeap()
