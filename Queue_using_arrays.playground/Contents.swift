@@ -43,4 +43,4 @@ var queueArray = QueueArray<String>()
 queueArray.enqueue("Fayaz")
 queueArray.enqueue("Mammoo")
 queueArray.dequeue()
-
+queueArray.dequeue()
