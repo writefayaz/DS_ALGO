@@ -13,29 +13,29 @@ struct User {
     let lastName  : String
 }
 
-class Node {
-    let value : Int
-    var next : Node?
-    init(value:Int){
+class Node<T>{
+    let value : T
+    var next : Node<T>?
+    init(value:T){
         self.value = value
     }
 }
 
-class Stack {
-    var top : Node?
-    func push(_ value:Int){
+class Stack<T> {
+    var top : Node<T>?
+    func push(_ value: T){
         let oldTop = top
         top = Node(value: value)
         top?.next = oldTop
     }
-    func pop() -> Int? {
+    func pop() -> T? {
         let currentTop = top
         top = top?.next
         return currentTop?.value
     }
 }
 
-var stack = Stack()
+var stack = Stack<Int>()
 stack.push(1)
 stack.push(2)
 stack.push(3)
@@ -44,6 +44,24 @@ stack.pop()
 stack.pop()
 stack.pop()
 stack.pop()
+
+
+var stackUser = Stack<User>()
+let me  = User(firstName: "Fayaz", lastName: "Mammoo")
+let you = User(firstName: "Swift", lastName: "Playground")
+
+stackUser.push(me)
+stackUser.push(you)
+
+let firstPop = stackUser.pop()
+print(firstPop?.firstName ?? "Nil")
+
+let secondPop = stackUser.pop()
+print(secondPop?.firstName ?? "Nil")
+
+let thirdPop = stackUser.pop()
+print(thirdPop?.firstName ?? "Nil")
+
 
 
 
